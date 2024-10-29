@@ -1,0 +1,8 @@
+db.runCommand({enablesharding : "database"})
+
+db.runCommand({shardcollection : "db.movies",key : {_id :"hashed"}})
+
+use config;
+db.collections.find( {_id: "db.movies" } )
+
+db.printShardingStatus()
